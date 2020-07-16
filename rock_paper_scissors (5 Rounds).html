@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+
+    <p>Player Chooses:</p>
+    <p id=pPlay></p>
+    <p>Computer Chooses:</p>
+    <p id="cPlay"></p>
+    <p>And the winner is...</p>
+    <p id="winner"></p>
+
+    <script>
+        //random return of RPS
+        var cChoice = ["rock", "paper", "scissors"];
+
+        var playerSelection= prompt("Rock, paper, or scissors?");
+        
+        function computerSelection(cChoice) {
+            return cChoice[Math.floor(Math.random()*cChoice.length)];
+        }
+
+        var compChoice = computerSelection(cChoice);
+
+        function playRound(playerSelection, compChoice){
+            //compares the two and declares a winner
+
+            var whoWon;
+            //Player Wins...
+            if (playerSelection == "rock" && compChoice == "scissors") {
+                whoWon = "Rock beats scissors. Player wins!";
+            }
+            else if (playerSelection == "scissors" && compChoice == "paper") {
+                whoWon = "Scissors beats paper. Player wins!";
+            }
+            else if (playerSelection == "paper" && compChoice == "rock") {
+                whoWon = "Paper beats rock. Player wins!";
+            }
+
+            //Computer Wins...
+            else if (playerSelection == "scissors" && compChoice == "rock") {
+                whoWon = "Rock beats scissors. Computer wins!";
+            }
+            else if (playerSelection == "paper" && compChoice == "scissors") {
+                whoWon = "Scissors beats paper. Computer wins!";
+            }
+            else if (playerSelection == "rock" && compChoice == "paper") {
+                whoWon = "Paper beats rock. Computer wins!";
+            }
+
+            //Tie...
+            else {
+                whoWon = "It's a tie!";
+            }
+            return whoWon;
+        }
+
+        function game(playRound){
+            //plays the game 5 times and keeps score
+            var gamePlay = 12;
+
+            console.log(gamePlay);
+            return gamePlay;
+
+        }
+
+        console.log("player's move: " + playerSelection);
+        console.log("computer's move: " + compChoice);
+        console.log(playRound(playerSelection, compChoice));
+
+        document.getElementById("pPlay").innerHTML = playerSelection;
+        document.getElementById("cPlay").innerHTML = compChoice;
+        document.getElementById("winner").innerHTML = playRound(playerSelection, compChoice);
+    </script>
+</body>
+</html>
